@@ -1,14 +1,18 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "A note keeping app made with node and express.js.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index"
   },
-  "author": "",
+  "author": "Jared Green",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

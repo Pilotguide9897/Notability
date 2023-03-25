@@ -16,6 +16,14 @@ body {
   cursor: pointer;
 }
 
+.fa-save { /*Fix the margins on the icons to make them appear less squished*/
+  margin-right: 15px;
+}
+
+.fa-plus { /*Fix the margins on the icons to make them appear less squished*/
+  margin-right: 15px;
+}
+
 .note-textarea,
 .note-title {
   color: #000000;

@@ -42,8 +42,9 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
+  // Need to make sure that this matches the id that I generate.
 const deleteNote = (id) =>
-  fetch(`/api/notes/${id}`, {
+  fetch(`/api/notes/${id}`, {   // Should this not be /:${id}?
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

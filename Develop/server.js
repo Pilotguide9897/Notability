@@ -24,7 +24,7 @@ app.use(express.json());
 
 // API routes
     // Route to fetch note data.
-    app.get('/api/notes', (req,res) => {
+    app.get('/api/notes', (req, res) => {
         const filePath = path.join(__dirname,'db', 'db.json')
         fs.readFile(filePath, function(error,data) {
             if (error) {
@@ -50,7 +50,6 @@ app.use(express.json());
             } else {
                 const notes = JSON.parse(data);
                 notes.push(newNote);
-                // how do I add the unique uuid to this?
             
         fs.writeFile(filePath, /*need to re-stringify the data*/ JSON.stringify(notes), function(error) {
             if (error) {
@@ -63,6 +62,29 @@ app.use(express.json());
         }
     });
 });
+
+    app.delete('/api/notes/:id', (req, res) => {
+        const filePath = path.join(__dirname,'db', 'db.json');
+        fs.readFile(filePath, (error,data) => {
+            if (error) {
+                console.error(error);
+                res.status(500).send('An error occurred while fetching the notes.');
+            } else {
+                const notes = JSON.parse(data);
+                const idToDelete = req.params.id;             
+                const filteredNotes = notes.filter(note => note.id !== idToDelete);
+
+        fs.writeFile(filePath, JSON.stringify(filteredNotes), function(error){
+            if (error) {
+                console.error(error);
+                res.status(500).send('An error occurred while updating your notes...')
+            } else {
+                res.status(204).send();
+            }
+        }) 
+      }
+    });
+  });
 
 // Listens for connection. // Working.
 app.listen(PORT, () => {

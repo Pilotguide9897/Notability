@@ -6,7 +6,7 @@ const fs = require('fs');
 const uuid = require('uuid');
 const PORT = process.env.PORT || 5001;
 
-// app.use(express.static('public'));
+app.use(express.static('public'));
 app.use(express.json());
 
 // HTML routes
@@ -20,13 +20,11 @@ app.use(express.json());
         res.sendFile(__dirname + '/public/index.html');
     });
 
-  
-
 // API routes
-    // Route to fetch note data.
+    // Route to fetch note data. Is working.
     app.get('/api/notes', (req, res) => {
         const filePath = path.join(__dirname,'db', 'db.json')
-        fs.readFile(filePath, function(error,data) {
+        fs.readFile(filePath, function(error, data) {
             if (error) {
                 console.error(error);
                 res.status(500).send('An error occurred while fetching the notes.');
@@ -37,7 +35,7 @@ app.use(express.json());
         });
     });
 
-    // Route to add new notes to the db.json file.
+    // Route to add new notes to the db.json file. Also working.
     app.post('/api/notes', (req, res) => {
         const id = uuid.v4();
         const newNote = { ...req.body, id }; // use the spread operator to create a new object that includes all the properties of the original req.body.

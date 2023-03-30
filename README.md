@@ -21,7 +21,8 @@ The deployed application may be accessed [here]().
 
 ## Screenshots 
 
-
+![Landing Page](https://github.com/Pilotguide9897/Notability/blob/main/Notability%20Screenshots/Landing%20Page.png)
+![Notes Page](https://github.com/Pilotguide9897/Notability/blob/main/Notability%20Screenshots/Notes%20Page.png)
 
 ## Installation
 No installation is required for users to access the deployed application except for installation of a modern web browser (e.g., Chrome, Safari, Firefox, Edge).

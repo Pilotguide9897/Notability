@@ -1,9 +1,11 @@
+// Declaring variables to be used below.
 let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
+// Sets variables to certain elements for the notes path ==> notes.html
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
@@ -25,6 +27,7 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
+// Makes a GET request on the 'api/notes' route that was created in server.js
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -33,6 +36,7 @@ const getNotes = () =>
     },
   });
 
+// Makes a GET request on the 'api/notes' route that was created in server.js
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -42,6 +46,7 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
+// Deletes the corresponding note by making a DELETE request on the 'api/notes' route that was created in server.js  
   // Need to make sure that this matches the id that I generate.
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {   // Should this not be /:${id}?
@@ -50,6 +55,9 @@ const deleteNote = (id) =>
       'Content-Type': 'application/json',
     },
   });
+
+
+
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
@@ -171,9 +179,10 @@ const renderNoteList = async (notes) => {
   }
 };
 
-// Gets notes from the db and renders them to the sidebar
+// Gets notes from the db and renders them to the sidebar (It seems that this is not functioning appropriately...)
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
+// Sets the event listeners for elements depending on the window path name.
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
